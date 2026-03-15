@@ -15,6 +15,7 @@ J'ai repris la base du jeu Snake et j'ai entièrement **redesigné l'architectur
 ## ✨ Ce que j'ai ajouté
 
 ### 🧠 Intelligence Artificielle
+
 - **Vision matricielle 8×8** — l'IA reçoit une grille de 64 cellules centrée sur sa tête (au lieu de 13 capteurs directionnels)
   - `0.0` = case vide
   - `0.1` = mur ou corps du serpent
@@ -28,6 +29,7 @@ J'ai repris la base du jeu Snake et j'ai entièrement **redesigné l'architectur
   - Élitisme : les 5 meilleurs survivent intacts
 
 ### 🎨 Interface & Visualisation
+
 - **Layout 3 colonnes** :
   - Gauche → réseau de neurones en temps réel (disposition verticale)
   - Centre → jeu Snake
@@ -38,7 +40,7 @@ J'ai repris la base du jeu Snake et j'ai entièrement **redesigné l'architectur
 - **Splash screen premium** avec particules animées et coins décoratifs
 
 ### 🌐 Code
-- Tous les commentaires traduits en **français**
+
 - Code reorganisé en modules : `config.js`, `game.js`, `network.js`, `trainer.js`, `visualizer.js`, `controller.js`, `sound.js`
 
 ---
@@ -48,6 +50,7 @@ J'ai repris la base du jeu Snake et j'ai entièrement **redesigné l'architectur
 Aucune installation nécessaire — c'est du HTML/CSS/JS pur.
 
 1. Clone le repo :
+
 ```bash
 git clone https://github.com/nihadchliyah/snake-genetic-ai.git
 ```
@@ -60,13 +63,13 @@ C'est tout ! ✅
 
 ## 🎮 Comment jouer
 
-| Bouton | Action |
-|--------|--------|
-| `▶ AI PLAY` | L'IA joue automatiquement |
-| `⚡ TRAIN` | Lance un entraînement génétique (40 générations) |
-| `🎮 HUMAN` | Tu joues avec les flèches du clavier |
-| `↺ RESET` | Réinitialise l'IA et relance un entraînement |
-| Slider SPEED | Ajuste la vitesse du jeu |
+| Bouton         | Action                                                |
+| -------------- | ----------------------------------------------------- |
+| `▶ AI PLAY` | L'IA joue automatiquement                             |
+| `⚡ TRAIN`   | Lance un entraînement génétique (40 générations) |
+| `🎮 HUMAN`   | Tu joues avec les flèches du clavier                 |
+| `↺ RESET`   | Réinitialise l'IA et relance un entraînement        |
+| Slider SPEED   | Ajuste la vitesse du jeu                              |
 
 **Touches clavier (mode humain) :** `↑ ↓ ← →` ou `W A S D`
 
@@ -84,6 +87,7 @@ Chaque génération :
 ```
 
 **Fonction de fitness :**
+
 - Manger de la nourriture = récompense quadratique (manger plus = score qui explose)
 - Manger vite = bonus d'efficacité
 - Collision mur ou corps = fin immédiate de la partie
