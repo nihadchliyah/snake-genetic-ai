@@ -1,0 +1,19 @@
+# Dépendances
+node_modules/
+
+# Fichiers système
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Éditeurs
+.vscode/settings.json
+*.suo
+*.user
+
+# Logs
+*.log
+
+# Fichiers temporaires
+*.tmp
+*.bak

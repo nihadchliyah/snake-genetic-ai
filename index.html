@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Snake AI — Neural Network</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ══ HEADER ══════════════════════════════════════════════════ -->
+<header id="hdr">
+  <div id="hdr-brand">
+    <div class="brand-dot"></div>
+    <span>SNAKE</span>
+    <span class="brand-sub">Neural Network AI</span>
+  </div>
+
+  <div id="hdr-stats">
+    <div class="hstat">
+      <span class="hstat-label">SCORE</span>
+      <span class="hstat-val" id="score-val">0</span>
+    </div>
+    <div class="hstat-sep"></div>
+    <div class="hstat">
+      <span class="hstat-label">HI SCORE</span>
+      <span class="hstat-val gold" id="hi-val">—</span>
+    </div>
+    <div class="hstat-sep"></div>
+    <div class="hstat">
+      <span class="hstat-label">GENERATION</span>
+      <span class="hstat-val" id="gen-val">—</span>
+    </div>
+    <div class="hstat-sep"></div>
+    <div class="hstat">
+      <span class="hstat-label">BEST FOOD</span>
+      <span class="hstat-val" id="best-val">—</span>
+    </div>
+    <div class="hstat-sep"></div>
+    <div class="hstat">
+      <span class="hstat-label">AVG FOOD</span>
+      <span class="hstat-val" id="avg-val">—</span>
+    </div>
+    <div class="hstat-sep"></div>
+    <div class="hstat">
+      <span class="hstat-label">MODE</span>
+      <span class="hstat-val green" id="mode-indicator">LOADING…</span>
+    </div>
+  </div>
+
+  <button class="btn-icon" id="btn-sound" title="Toggle sound">🔊</button>
+</header>
+
+<!-- ══ MAIN — 3 colonnes ═══════════════════════════════════════ -->
+<main id="main">
+
+  <!-- ── GAUCHE : Réseau de neurones + Fitness ──────────────── -->
+  <div id="left-panel">
+
+    <div class="card" id="card-network">
+      <div class="card-title">
+        NEURAL NETWORK
+        <span class="badge">64 → 32 → 4</span>
+        <span class="badge badge-arch">GENETIC · 8×8 VISION</span>
+      </div>
+      <div id="net-frame"><canvas id="net-canvas"></canvas></div>
+    </div>
+
+    <div class="card" id="card-fitness">
+      <div class="card-title">
+        FITNESS HISTORY
+        <span class="badge">training</span>
+      </div>
+      <canvas id="fit-canvas"></canvas>
+    </div>
+
+  </div>
+
+  <!-- ── CENTRE : Jeu ───────────────────────────────────────── -->
+  <section id="game-section">
+
+    <div id="game-frame">
+      <canvas id="game-canvas"></canvas>
+      <div id="overlay" class="hidden">
+        <div id="overlay-box">
+          <div id="overlay-title">GAME OVER</div>
+          <div id="overlay-score"></div>
+          <button id="btn-restart">PLAY AGAIN</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="gold-timer" class="hidden">
+      <span class="gold-lbl">★ GOLDEN APPLE</span>
+      <div id="gold-track"><div id="gold-fill"></div></div>
+      <span id="gold-time">7.0s</span>
+    </div>
+
+    <div id="controls">
+      <button class="btn primary"   id="btn-ai">▶ AI PLAY</button>
+      <button class="btn secondary" id="btn-train">⚡ TRAIN</button>
+      <button class="btn ghost"     id="btn-human">🎮 HUMAN</button>
+      <button class="btn danger"    id="btn-reset">↺ RESET</button>
+
+      <div id="speed-wrap">
+        <span class="ctrl-label">SPEED</span>
+        <input type="range" id="speed-slider" min="1" max="20" value="8">
+        <span id="speed-val">8</span>
+      </div>
+    </div>
+
+    <div id="train-panel" class="hidden">
+      <div id="train-track"><div id="train-bar"></div></div>
+      <div id="train-status">Initialising population…</div>
+    </div>
+
+  </section>
+
+  <!-- ── DROITE : Vision + Décisions + Poids ────────────────── -->
+  <div id="right-panel">
+
+    <div class="card" id="card-inputs">
+      <div class="card-title">
+        VISION MATRICIELLE
+        <span class="badge">8×8 · 64 cellules</span>
+      </div>
+      <div id="inputs-list"></div>
+    </div>
+
+    <div class="card" id="card-outputs">
+      <div class="card-title">
+        OUTPUT LAYER
+        <span class="badge">decision</span>
+      </div>
+      <div id="outputs-list"></div>
+    </div>
+
+    <div class="card" id="card-weights">
+      <div class="card-title">
+        WEIGHT MATRIX
+        <span class="badge">live</span>
+      </div>
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="ih">Input → Hidden</button>
+        <button class="tab-btn"        data-tab="ho">Hidden → Output</button>
+      </div>
+      <div id="weights-display"></div>
+    </div>
+
+  </div>
+
+</main>
+
+<!-- ══ SPLASH SCREEN ════════════════════════════════════════════ -->
+<div id="splash">
+  <canvas id="splash-canvas"></canvas>
+  <div class="splash-corner tl"></div>
+  <div class="splash-corner tr"></div>
+  <div class="splash-corner bl"></div>
+  <div class="splash-corner br"></div>
+
+  <div id="splash-inner">
+    <div id="splash-snake">
+      <div class="seg"></div>
+      <div class="seg"></div>
+      <div class="seg"></div>
+      <div class="seg"></div>
+      <div class="seg head"></div>
+    </div>
+
+    <h1 id="splash-title">SNAKE</h1>
+    <div id="splash-sub">NEURAL NETWORK AI</div>
+
+    <div id="splash-features">
+      <span class="feat-pill">⚡ ALGORITHME GÉNÉTIQUE</span>
+      <span class="feat-pill">🧠 VISION 8×8 MATRICIELLE</span>
+      <span class="feat-pill">🎯 60 AGENTS EN PARALLÈLE</span>
+    </div>
+
+    <div id="splash-tagline">Apprend à éviter les murs · Évolue génération après génération</div>
+
+    <div id="splash-actions">
+      <button id="splash-ai-btn" class="splash-btn primary">▶ AI PLAY</button>
+      <button id="splash-human-btn" class="splash-btn ghost">🎮 HUMAN PLAY</button>
+    </div>
+
+    <div id="splash-hint">— APPUIE SUR N'IMPORTE QUELLE TOUCHE —</div>
+  </div>
+</div>
+
+<script src="src/config.js"></script>
+<script src="src/game.js"></script>
+<script src="src/sound.js"></script>
+<script src="src/network.js"></script>
+<script src="src/trainer.js"></script>
+<script src="src/visualizer.js"></script>
+<script src="src/controller.js"></script>
+</body>
+</html>
