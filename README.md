@@ -4,7 +4,7 @@
 
 ---
 
-## 📌 À propos
+##  À propos
 
 Ce projet est un **fork** du repo de [tomDeprez](https://github.com/tomDeprez/Snake-IT-DFS34A) réalisé dans le cadre du cours **DFS34A**.
 
@@ -12,9 +12,9 @@ J'ai repris la base du jeu Snake et j'ai entièrement **redesigné l'architectur
 
 ---
 
-## ✨ Ce que j'ai ajouté
+## Ce que j'ai ajouté
 
-### 🧠 Intelligence Artificielle
+###  Intelligence Artificielle
 
 - **Vision matricielle 8×8** — l'IA reçoit une grille de 64 cellules centrée sur sa tête (au lieu de 13 capteurs directionnels)
   - `0.0` = case vide
@@ -28,7 +28,7 @@ J'ai repris la base du jeu Snake et j'ai entièrement **redesigné l'architectur
   - Mutation adaptative (agressive au début, fine à la fin)
   - Élitisme : les 5 meilleurs survivent intacts
 
-### 🎨 Interface & Visualisation
+### Interface & Visualisation
 
 - **Layout 3 colonnes** :
   - Gauche → réseau de neurones en temps réel (disposition verticale)
@@ -39,13 +39,13 @@ J'ai repris la base du jeu Snake et j'ai entièrement **redesigné l'architectur
 - **Graphe de fitness** : évolution des performances génération par génération
 - **Splash screen premium** avec particules animées et coins décoratifs
 
-### 🌐 Code
+### Code
 
 - Code reorganisé en modules : `config.js`, `game.js`, `network.js`, `trainer.js`, `visualizer.js`, `controller.js`, `sound.js`
 
 ---
 
-## 🚀 Comment lancer le jeu
+##  Comment lancer le jeu
 
 Aucune installation nécessaire — c'est du HTML/CSS/JS pur.
 
@@ -57,16 +57,16 @@ git clone https://github.com/nihadchliyah/snake-genetic-ai.git
 
 2. Ouvre `index.html` dans ton navigateur
 
-C'est tout ! ✅
+C'est tout ! 
 
 ---
 
-## 🎮 Comment jouer
+##  Comment jouer
 
 | Bouton         | Action                                                |
 | -------------- | ----------------------------------------------------- |
 | `▶ AI PLAY` | L'IA joue automatiquement                             |
-| `⚡ TRAIN`   | Lance un entraînement génétique (40 générations) |
+| ` TRAIN`   | Lance un entraînement génétique (40 générations) |
 | `🎮 HUMAN`   | Tu joues avec les flèches du clavier                 |
 | `↺ RESET`   | Réinitialise l'IA et relance un entraînement        |
 | Slider SPEED   | Ajuste la vitesse du jeu                              |
@@ -75,7 +75,7 @@ C'est tout ! ✅
 
 ---
 
-## 🧬 Comment fonctionne l'IA
+##  Comment fonctionne l'IA
 
 ```
 Chaque génération :
@@ -94,7 +94,7 @@ Chaque génération :
 
 ---
 
-## 📁 Structure du projet
+##  Structure du projet
 
 ```
 snake-genetic-ai/
@@ -112,14 +112,14 @@ snake-genetic-ai/
 
 ---
 
-## 🔗 Repo original
+##  Repo original
 
 Ce projet est basé sur le travail de **tomDeprez** :
-👉 [github.com/tomDeprez/Snake-IT-DFS34A](https://github.com/tomDeprez/Snake-IT-DFS34A)
+ [github.com/tomDeprez/Snake-IT-DFS34A](https://github.com/tomDeprez/Snake-IT-DFS34A)
 
 ---
 
-## 👤 Auteur
+##  Auteur
 
 **Nihad Chliyah**
 [github.com/nihadchliyah](https://github.com/nihadchliyah)
